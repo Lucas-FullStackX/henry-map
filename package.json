@@ -10,7 +10,8 @@
     "check-types": "tsc --pretty --noEmit",
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prepare": "npx husky install"
   },
   "dependencies": {
     "@types/node": "18.11.11",
