@@ -14,7 +14,7 @@ import logo from '../../img/HENRY_logo_1.png';
 export default function LadingPage() {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   return (
-    <>
+    <div className={styles.containerPro}>
       <div className={styles.circle}>
         <img src={logo.src} className={styles.img} />
       </div>
@@ -70,93 +70,98 @@ export default function LadingPage() {
           </Grid>
         </Grid>
       </Box>
-      <div className={styles.fontYellow}></div>
-      <div className={styles.fontWhite}>
-        <Grid
-          container
-          direction="column"
-          justifyContent="space-around"
-          alignItems="flex-start"
-          className={styles.containerCard}
-        >
-          <Avatar
-            sx={{
-              marginLeft: '117px',
-              marginBottom: '5px',
-              marginTop: '10px',
-              bgcolor: '#ffff02'
-            }}
+      <div className={styles.yellowContainer}>
+        <div className={styles.fontYellow}></div>
+        <div className={styles.fontWhite}>
+          <Grid
+            container
+            direction="column"
+            justifyContent="space-around"
+            alignItems="flex-start"
+            className={styles.containerCard}
           >
-            <ShareIcon
-              fontSize="large"
-              sx={{ color: 'white', padding: '5px' }}
-            />
-          </Avatar>
-          <Typography
-            className={styles.numberCard}
-            sx={{ paddingBottom: '0px' }}
+            <Avatar
+              sx={{
+                marginLeft: '117px',
+                marginBottom: '5px',
+                marginTop: '10px',
+                bgcolor: '#ffff02'
+              }}
+            >
+              <ShareIcon
+                fontSize="large"
+                sx={{ color: 'white', padding: '5px' }}
+              />
+            </Avatar>
+            <Typography
+              className={styles.numberCard}
+              sx={{ paddingBottom: '0px' }}
+            >
+              {' '}
+              +30{' '}
+            </Typography>
+            <Typography className={styles.cardText}>Shared Maps</Typography>
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            justifyContent="space-around"
+            alignItems="flex-start"
+            className={styles.containerCard}
           >
-            {' '}
-            +30{' '}
-          </Typography>
-          <Typography className={styles.cardText}>Shared Maps</Typography>
-        </Grid>
-        <Grid
-          container
-          direction="column"
-          justifyContent="space-around"
-          alignItems="flex-start"
-          className={styles.containerCard}
-        >
-          <Avatar
-            sx={{
-              marginLeft: '117px',
-              marginBottom: '5px',
-              marginTop: '10px',
-              bgcolor: '#ffff02'
-            }}
+            <Avatar
+              sx={{
+                marginLeft: '117px',
+                marginBottom: '5px',
+                marginTop: '10px',
+                bgcolor: '#ffff02'
+              }}
+            >
+              <InsertEmoticonIcon
+                fontSize="large"
+                sx={{ color: 'white', padding: '5px' }}
+              />
+            </Avatar>
+            <Typography
+              className={styles.numberCard}
+              sx={{ paddingBottom: '0px' }}
+            >
+              {' '}
+              +50{' '}
+            </Typography>
+            <Typography className={styles.cardText}>Happy Clients</Typography>
+          </Grid>
+          <Grid
+            container
+            direction="column"
+            justifyContent="space-around"
+            alignItems="flex-start"
+            className={styles.containerCard}
           >
-            <InsertEmoticonIcon
-              fontSize="large"
-              sx={{ color: 'white', padding: '5px' }}
-            />
-          </Avatar>
-          <Typography
-            className={styles.numberCard}
-            sx={{ paddingBottom: '0px' }}
-          >
-            {' '}
-            +50{' '}
-          </Typography>
-          <Typography className={styles.cardText}>Happy Clients</Typography>
-        </Grid>
-        <Grid
-          container
-          direction="column"
-          justifyContent="space-around"
-          alignItems="flex-start"
-          className={styles.containerCard}
-        >
-          <Avatar
-            sx={{
-              marginLeft: '117px',
-              marginBottom: '5px',
-              marginTop: '10px',
-              bgcolor: '#ffff02'
-            }}
-          >
-            <MapIcon fontSize="large" sx={{ color: 'white', padding: '5px' }} />
-          </Avatar>
-          <Typography
-            className={styles.numberCard}
-            sx={{ paddingBottom: '0px' }}
-          >
-            {' '}
-            +50{' '}
-          </Typography>
-          <Typography className={styles.cardText}>Maps Created</Typography>
-        </Grid>
+            <Avatar
+              sx={{
+                marginLeft: '117px',
+                marginBottom: '5px',
+                marginTop: '10px',
+                bgcolor: '#ffff02'
+              }}
+            >
+              <MapIcon
+                fontSize="large"
+                sx={{ color: 'white', padding: '5px' }}
+              />
+            </Avatar>
+            <Typography
+              className={styles.numberCard}
+              sx={{ paddingBottom: '0px' }}
+            >
+              {' '}
+              +50{' '}
+            </Typography>
+            <Typography className={styles.cardText}>Maps Created</Typography>
+          </Grid>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

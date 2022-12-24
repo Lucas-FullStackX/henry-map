@@ -8,7 +8,9 @@
   padding: auto;
   z-index: -1;
 }
-
+.containerPro {
+  width: 100%;
+}
 .circle {
   position: absolute;
   border-radius: 300px;
@@ -134,9 +136,15 @@
 .fontYellow {
   width: 100%;
   height: 150px;
-  margin-top: 100px;
   background: #ffff02;
-  margin-bottom: 130px;
+  position: absolute;
+  z-index: -1;
+  top: -50px;
+}
+.yellowContainer {
+  width: 100%;
+  margin-top: 120px;
+  position: absolute;
 }
 
 .fontWhite {
@@ -145,21 +153,16 @@
   align-items: center;
   padding: 32px 0px;
   gap: 30px;
-  position: absolute;
-  margin-left: 100px;
-  margin-top: -230px;
+  /* position: absolute; */
+  /* margin-left: 100px; */
+  /* margin-top: -230px; */
   justify-content: center;
-
   width: 80%;
+  margin: auto;
   height: 170px;
-
-  /* Default / White */
-
   background: #ffffff;
-  /* Dark Shadow */
-
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  box-shadow: rgb(50 50 93 / 25%) 0px 6px 12px -2px,
+    rgb(0 0 0 / 30%) 0px 3px 7px -3px;
   border-radius: 8px;
   text-align: center;
 }
