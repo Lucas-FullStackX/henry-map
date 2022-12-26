@@ -127,15 +127,20 @@ export default function NavBar() {
                 )}
               </Grid>
               <Divider />
-              <MenuItem onClick={handleClose}>
-                <PersonIcon
-                  sx={{
-                    marginRight: '10px',
-                    marginLeft: '-2px'
-                  }}
-                />
-                Your Profile
-              </MenuItem>
+              <Link
+                href="/user"
+                sx={{ textDecoration: 'none', color: '#000000' }}
+              >
+                <MenuItem>
+                  <PersonIcon
+                    sx={{
+                      marginRight: '10px',
+                      marginLeft: '-2px'
+                    }}
+                  />
+                  Your Profile
+                </MenuItem>
+              </Link>
               <MenuItem onClick={() => logout()}>
                 <LogoutIcon sx={{ marginRight: '8px' }} />
                 Log out
