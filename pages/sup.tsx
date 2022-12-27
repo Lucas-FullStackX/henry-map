@@ -7,6 +7,7 @@ export default function supPrueba() {
   return (
     <Paper>
       <div>
+        <Switch color="primary"></Switch>
         <button type="button">I am so fucking boring!</button>
         <Button color="primary" variant="contained">
           I am so fucking boring!
@@ -14,7 +15,6 @@ export default function supPrueba() {
         <Button color="secondary" variant="contained">
           I am so fucking boring!
         </Button>
-        <Switch></Switch>
         <Typography variant="h1">RoadMap Henrys</Typography>
       </div>
     </Paper>
