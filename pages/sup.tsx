@@ -1,10 +1,11 @@
+import { Paper, Typography } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import { Switch } from '@mui/material';
 // import React from 'react'
 
 export default function supPrueba() {
   return (
-    <div>
+    <Paper>
       <div>
         <button type="button">I am so fucking boring!</button>
         <Button color="primary" variant="contained">
@@ -14,7 +15,8 @@ export default function supPrueba() {
           I am so fucking boring!
         </Button>
         <Switch></Switch>
+        <Typography variant="h1">RoadMap Henrys</Typography>
       </div>
-    </div>
+    </Paper>
   );
 }
