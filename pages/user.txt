@@ -1,0 +1,5 @@
+import TestGraph from '../src/RoadMap/testGraph';
+
+export default function User() {
+  return <TestGraph />;
+}

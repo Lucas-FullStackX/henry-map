@@ -14,7 +14,7 @@ import logo from '../../img/HENRY_logo_1.png';
 export default function LadingPage() {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   return (
-    <div className={styles.containerPro}>
+    <Box className={styles.containerPro}>
       <div className={styles.circle}>
         <img src={logo.src} className={styles.img} />
       </div>
@@ -162,6 +162,6 @@ export default function LadingPage() {
           </Grid>
         </div>
       </div>
-    </div>
+    </Box>
   );
 }
