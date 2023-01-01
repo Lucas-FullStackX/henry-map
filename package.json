@@ -11,12 +11,17 @@
     "check-format": "prettier --check .",
     "check-lint": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "format": "prettier --write .",
-    "prepare": "npx husky install"
+    "prepare": "npx husky install",
+    "generate": "graphql-codegen --require dotenv/config --config codegen.yml dotenv_config_path=.env"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.3",
     "@auth0/auth0-react": "^1.12.0",
+    "@emotion/cache": "^11.10.5",
     "@emotion/react": "^11.10.5",
+    "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/roboto": "^4.5.8",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.0",
     "@types/node": "18.11.11",
@@ -25,6 +30,7 @@
     "classnames": "^2.3.2",
     "d3": "^7.8.0",
     "eslint-config-next": "13.0.6",
+    "graphql": "^16.6.0",
     "lodash-es": "^4.17.21",
     "next": "13.0.6",
     "react": "18.2.0",
@@ -39,6 +45,11 @@
     "typescript": "4.9.4"
   },
   "devDependencies": {
+    "@graphql-codegen/add": "^3.2.3",
+    "@graphql-codegen/cli": "^2.16.2",
+    "@graphql-codegen/typescript": "^2.8.6",
+    "@graphql-codegen/typescript-operations": "^2.5.11",
+    "@graphql-codegen/typescript-react-apollo": "^3.3.7",
     "@types/lodash-es": "^4.17.6",
     "@types/three": "^0.146.0",
     "@typescript-eslint/eslint-plugin": "^5.45.1",

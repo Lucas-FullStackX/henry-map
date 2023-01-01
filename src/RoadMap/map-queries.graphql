@@ -1,0 +1,12 @@
+query FetchMapList {
+  MapsList {
+    count
+    items {
+      id
+      name
+      visible
+      node_custom_fields
+      relation_custom_fields
+    }
+  }
+}
