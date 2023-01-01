@@ -19,7 +19,15 @@ const FocusGraph = () => {
 
   const handleClick = useCallback(
     node => {
-      console.log('INFO', node);
+      // Aim at node from outside it
+      const distance = 40;
+      const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
+      console.log(node);
+      fgRef?.current?.cameraPosition(
+        { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }, // new position
+        node, // lookAt ({ x, y, z })
+        3000 // ms transition duration
+      );
     },
     [fgRef]
   );
@@ -29,6 +37,7 @@ const FocusGraph = () => {
       graphData={data}
       nodeLabel="id"
       nodeThreeObject={node => {
+        console.log(node);
         const typeNode: MindMapNodeData = node;
         const sprite = new SpriteText(String(typeNode.name));
         sprite.color = `#fff`;

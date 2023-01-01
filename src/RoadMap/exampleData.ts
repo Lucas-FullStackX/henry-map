@@ -1,4 +1,35 @@
-const data = {
+export type DataNodeType = {
+  id?: string | number;
+  isClusterNode?: boolean;
+  name?: string;
+  size?: number;
+  centrality?: number;
+  degrees?: number;
+  clusterId?: string;
+  val?: number;
+  x?: number;
+  y?: number;
+  z?: number;
+  vx?: number;
+  vy?: number;
+  vz?: number;
+  fx?: number;
+  fy?: number;
+  fz?: number;
+};
+export type LinkObjectType = {
+  source?: string | number | DataNodeType;
+  target?: string | number | DataNodeType;
+};
+
+export type DataType = {
+  nodes: DataNodeType[];
+  links: {
+    source: string;
+    target: string;
+  }[];
+};
+const data: DataType = {
   nodes: [
     {
       id: '0',
