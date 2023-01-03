@@ -1,0 +1,39 @@
+overwrite: true
+schema: '${NEXT_PUBLIC_API_SCHEMA}'
+documents: 'src/**/*.graphql'
+generates:
+  src/shared/types/generated.ts:
+    plugins:
+      - add:
+          content: '/* eslint-disable */'
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      avoidOptionals:
+        field: true
+      maybeValue: T
+      scalars:
+        JSON: {}
+        DateTime: string
+        Date: string
+        BigInt: string
+        Time: string
+  src/shared/types/types.ts:
+    plugins:
+      - add:
+          content: '/* eslint-disable */'
+      - typescript
+      - typescript-operations:
+          onlyOperationTypes: true
+          avoidOptionals:
+            field: true
+      - typescript-react-apollo
+    config:
+      maybeValue: T
+      scalars:
+        JSON: {}
+        DateTime: string
+        Date: string
+        BigInt: string
+        Time: string
