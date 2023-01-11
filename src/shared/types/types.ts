@@ -17,91 +17,141 @@ export type Scalars = {
   JSON: {};
 };
 
+export type CategoriesListResponse = {
+  __typename?: 'CategoriesListResponse';
+  count?: Maybe<Scalars['Int']>;
+  items?: Maybe<Array<Maybe<Category>>>;
+};
+
+export type Category = {
+  __typename?: 'Category';
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+  roadMapsList?: Maybe<Array<Maybe<Map>>>;
+};
+
+export type CategoryInput = {
+  name: Scalars['String'];
+};
+
+export type CategoryMap = {
+  __typename?: 'CategoryMap';
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
+};
+
 export type Map = {
   __typename?: 'Map';
+  category?: Maybe<CategoryMap>;
   id?: Maybe<Scalars['ID']>;
   name?: Maybe<Scalars['String']>;
   node_custom_fields?: Maybe<Scalars['JSON']>;
   relation_custom_fields?: Maybe<Scalars['JSON']>;
+  user?: Maybe<UserMap>;
   visible?: Maybe<Scalars['Boolean']>;
 };
 
 export type MapInput = {
+  categoryId?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
-  node_custom_fields?: InputMaybe<Scalars['JSON']>;
-  relation_custom_fields?: InputMaybe<Scalars['JSON']>;
+  nodes?: InputMaybe<Scalars['JSON']>;
+  relations?: InputMaybe<Scalars['JSON']>;
+  userId?: InputMaybe<Scalars['String']>;
   visible?: InputMaybe<Scalars['Boolean']>;
 };
 
-export type MapListResponse = {
-  __typename?: 'MapListResponse';
+export type MapsListFilters = {
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type MapsListResponse = {
+  __typename?: 'MapsListResponse';
   count?: Maybe<Scalars['Int']>;
   items?: Maybe<Array<Maybe<Map>>>;
 };
 
 export type Mutation = {
   __typename?: 'Mutation';
+  createCategory?: Maybe<Category>;
   createMap?: Maybe<Map>;
-  createTask?: Maybe<Task>;
-  deleteTask?: Maybe<Scalars['String']>;
-  updateTask?: Maybe<Task>;
+  createUser?: Maybe<User>;
+};
+
+
+export type MutationCreateCategoryArgs = {
+  data: CategoryInput;
 };
 
 
 export type MutationCreateMapArgs = {
-  map?: InputMaybe<MapInput>;
+  map: MapInput;
 };
 
 
-export type MutationCreateTaskArgs = {
-  task?: InputMaybe<TaskInput>;
-};
-
-
-export type MutationDeleteTaskArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-};
-
-
-export type MutationUpdateTaskArgs = {
-  id?: InputMaybe<Scalars['ID']>;
-  task?: InputMaybe<TaskInput>;
+export type MutationCreateUserArgs = {
+  user: UserInput;
 };
 
 export type Query = {
   __typename?: 'Query';
-  MapsList?: Maybe<MapListResponse>;
-  getAllTasks?: Maybe<Array<Maybe<Task>>>;
-  getTask?: Maybe<Task>;
-  hello?: Maybe<Scalars['String']>;
+  categoriesList?: Maybe<CategoriesListResponse>;
+  getCategory?: Maybe<Category>;
+  mapsList?: Maybe<MapsListResponse>;
+  user?: Maybe<User>;
 };
 
 
-export type QueryGetTaskArgs = {
+export type QueryGetCategoryArgs = {
   id?: InputMaybe<Scalars['ID']>;
+  name?: InputMaybe<Scalars['String']>;
 };
 
-export type Task = {
-  __typename?: 'Task';
-  description?: Maybe<Scalars['String']>;
+
+export type QueryMapsListArgs = {
+  filters?: InputMaybe<MapsListFilters>;
+};
+
+
+export type QueryUserArgs = {
+  id: Scalars['String'];
+};
+
+export type User = {
+  __typename?: 'User';
+  email?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['ID']>;
-  title?: Maybe<Scalars['String']>;
+  name?: Maybe<Scalars['String']>;
+  roadMapsList?: Maybe<Array<Maybe<Map>>>;
 };
 
-export type TaskInput = {
-  description?: InputMaybe<Scalars['String']>;
-  title?: InputMaybe<Scalars['String']>;
+export type UserInput = {
+  email?: InputMaybe<Scalars['String']>;
+  name?: InputMaybe<Scalars['String']>;
+};
+
+export type UserMap = {
+  __typename?: 'UserMap';
+  email?: Maybe<Scalars['String']>;
+  id?: Maybe<Scalars['ID']>;
+  name?: Maybe<Scalars['String']>;
 };
 
 export type FetchMapListQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type FetchMapListQuery = { __typename?: 'Query', MapsList: { __typename?: 'MapListResponse', count: number, items: Array<{ __typename?: 'Map', id: string, name: string, visible: boolean, node_custom_fields: {}, relation_custom_fields: {} }> } };
+export type FetchMapListQuery = { __typename?: 'Query', mapsList: { __typename?: 'MapsListResponse', count: number, items: Array<{ __typename?: 'Map', id: string, name: string, visible: boolean, node_custom_fields: {}, relation_custom_fields: {} }> } };
+
+export type GetCategoryDetailQueryVariables = Exact<{
+  id?: InputMaybe<Scalars['ID']>;
+}>;
+
+
+export type GetCategoryDetailQuery = { __typename?: 'Query', getCategory: { __typename?: 'Category', id: string, name: string, roadMapsList: Array<{ __typename?: 'Map', id: string, name: string, visible: boolean, node_custom_fields: {}, relation_custom_fields: {}, user: { __typename?: 'UserMap', email: string, id: string, name: string } }> } };
 
 
 export const FetchMapListDocument = gql`
     query FetchMapList {
-  MapsList {
+  mapsList {
     count
     items {
       id
@@ -140,3 +190,51 @@ export function useFetchMapListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptio
 export type FetchMapListQueryHookResult = ReturnType<typeof useFetchMapListQuery>;
 export type FetchMapListLazyQueryHookResult = ReturnType<typeof useFetchMapListLazyQuery>;
 export type FetchMapListQueryResult = Apollo.QueryResult<FetchMapListQuery, FetchMapListQueryVariables>;
+export const GetCategoryDetailDocument = gql`
+    query getCategoryDetail($id: ID) {
+  getCategory(id: $id) {
+    id
+    name
+    roadMapsList {
+      id
+      name
+      visible
+      node_custom_fields
+      relation_custom_fields
+      user {
+        email
+        id
+        name
+      }
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetCategoryDetailQuery__
+ *
+ * To run a query within a React component, call `useGetCategoryDetailQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCategoryDetailQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCategoryDetailQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useGetCategoryDetailQuery(baseOptions?: Apollo.QueryHookOptions<GetCategoryDetailQuery, GetCategoryDetailQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCategoryDetailQuery, GetCategoryDetailQueryVariables>(GetCategoryDetailDocument, options);
+      }
+export function useGetCategoryDetailLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCategoryDetailQuery, GetCategoryDetailQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCategoryDetailQuery, GetCategoryDetailQueryVariables>(GetCategoryDetailDocument, options);
+        }
+export type GetCategoryDetailQueryHookResult = ReturnType<typeof useGetCategoryDetailQuery>;
+export type GetCategoryDetailLazyQueryHookResult = ReturnType<typeof useGetCategoryDetailLazyQuery>;
+export type GetCategoryDetailQueryResult = Apollo.QueryResult<GetCategoryDetailQuery, GetCategoryDetailQueryVariables>;

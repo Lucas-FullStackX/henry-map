@@ -1,0 +1,18 @@
+query getCategoryDetail($id: ID) {
+  getCategory(id: $id) {
+    id
+    name
+    roadMapsList {
+      id
+      name
+      visible
+      node_custom_fields
+      relation_custom_fields
+      user {
+        email
+        id
+        name
+      }
+    }
+  }
+}
