@@ -9,14 +9,17 @@ export default function CategoryDetail({ id }: { id: string }) {
       id: id ?? ''
     }
   });
-  console.log(data);
   return (
-    <Container>
+    <Container
+      sx={{
+        backgroundColor: '#1f1f1f'
+      }}
+    >
       <Typography variant="h3" gutterBottom>
         {data?.getCategory?.name ?? ''}
       </Typography>
       <Grid container spacing={2}>
-        {!loading && data.getCategory.roadMapsList ? (
+        {!loading && data?.getCategory?.roadMapsList ? (
           data.getCategory.roadMapsList.map(roadMap => {
             return <CategoryCard key={roadMap.id} roadMap={roadMap} />;
           })
