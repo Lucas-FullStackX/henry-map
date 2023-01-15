@@ -148,6 +148,11 @@ export type GetCategoryDetailQueryVariables = Exact<{
 
 export type GetCategoryDetailQuery = { __typename?: 'Query', getCategory: { __typename?: 'Category', id: string, name: string, roadMapsList: Array<{ __typename?: 'Map', id: string, name: string, visible: boolean, node_custom_fields: {}, relation_custom_fields: {}, user: { __typename?: 'UserMap', email: string, id: string, name: string } }> } };
 
+export type GetCategoriesListQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetCategoriesListQuery = { __typename?: 'Query', categoriesList: { __typename?: 'CategoriesListResponse', count: number, items: Array<{ __typename?: 'Category', id: string, name: string }> } };
+
 
 export const FetchMapListDocument = gql`
     query FetchMapList {
@@ -238,3 +243,41 @@ export function useGetCategoryDetailLazyQuery(baseOptions?: Apollo.LazyQueryHook
 export type GetCategoryDetailQueryHookResult = ReturnType<typeof useGetCategoryDetailQuery>;
 export type GetCategoryDetailLazyQueryHookResult = ReturnType<typeof useGetCategoryDetailLazyQuery>;
 export type GetCategoryDetailQueryResult = Apollo.QueryResult<GetCategoryDetailQuery, GetCategoryDetailQueryVariables>;
+export const GetCategoriesListDocument = gql`
+    query getCategoriesList {
+  categoriesList {
+    count
+    items {
+      id
+      name
+    }
+  }
+}
+    `;
+
+/**
+ * __useGetCategoriesListQuery__
+ *
+ * To run a query within a React component, call `useGetCategoriesListQuery` and pass it any options that fit your needs.
+ * When your component renders, `useGetCategoriesListQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useGetCategoriesListQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useGetCategoriesListQuery(baseOptions?: Apollo.QueryHookOptions<GetCategoriesListQuery, GetCategoriesListQueryVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useQuery<GetCategoriesListQuery, GetCategoriesListQueryVariables>(GetCategoriesListDocument, options);
+      }
+export function useGetCategoriesListLazyQuery(baseOptions?: Apollo.LazyQueryHookOptions<GetCategoriesListQuery, GetCategoriesListQueryVariables>) {
+          const options = {...defaultOptions, ...baseOptions}
+          return Apollo.useLazyQuery<GetCategoriesListQuery, GetCategoriesListQueryVariables>(GetCategoriesListDocument, options);
+        }
+export type GetCategoriesListQueryHookResult = ReturnType<typeof useGetCategoriesListQuery>;
+export type GetCategoriesListLazyQueryHookResult = ReturnType<typeof useGetCategoriesListLazyQuery>;
+export type GetCategoriesListQueryResult = Apollo.QueryResult<GetCategoriesListQuery, GetCategoriesListQueryVariables>;

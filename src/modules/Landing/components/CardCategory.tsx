@@ -1,17 +1,17 @@
 import { Card, Typography, Grid, CardActionArea } from '@mui/material';
-import { GetCategoryDetailQuery } from '../../../shared/types/generated';
+import { GetCategoriesListQuery } from '../../../shared/types/generated';
 import { Box } from '@mui/system';
 import { useRouter } from 'next/router';
 
-export default function CategoryCard({
-  roadMap
+export default function CardCategory({
+  category
 }: {
-  roadMap: GetCategoryDetailQuery['getCategory']['roadMapsList'][0];
+  category: GetCategoriesListQuery['categoriesList']['items'][0];
 }) {
   const router = useRouter();
   return (
     <Grid item xs={12} md={3}>
-      <Card onClick={() => router.push(`/road-map/${roadMap.id}`)}>
+      <Card onClick={() => router.push(`/category/${category.id}`)}>
         <CardActionArea
           sx={{
             padding: '15px',
@@ -27,11 +27,8 @@ export default function CategoryCard({
             alignItems="center"
             sx={{ height: '100%' }}
           >
-            <Typography variant="h5">{roadMap.name}</Typography>
+            <Typography variant="h5">{category.name}</Typography>
           </Box>
-          <Typography variant="subtitle2" textAlign="right">
-            {roadMap.user.name}
-          </Typography>
         </CardActionArea>
       </Card>
     </Grid>

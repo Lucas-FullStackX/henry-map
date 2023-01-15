@@ -13,7 +13,20 @@ const lightTheme = createTheme({
     mode: 'light'
   },
   typography: {
+    button: {
+      textTransform: 'none'
+    },
     fontFamily: roboto.style.fontFamily
+  },
+  components: {
+    MuiButton: {
+      defaultProps: {
+        size: 'large',
+        disableElevation: true,
+        color: 'primary',
+        variant: 'contained'
+      }
+    }
   }
 });
 

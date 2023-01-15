@@ -1,15 +1,18 @@
 import styles from './LandingPage.module.css';
-import AlignVerticalCenterIcon from '@mui/icons-material/AlignVerticalCenter';
-import AlignVerticalBottomIcon from '@mui/icons-material/AlignVerticalBottom';
-import AlignVerticalTopIcon from '@mui/icons-material/AlignVerticalTop';
-import AlignHorizontalLeftIcon from '@mui/icons-material/AlignHorizontalLeft';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 import ShareIcon from '@mui/icons-material/Share';
 import MapIcon from '@mui/icons-material/Map';
-import { Avatar, Container, Grid, Link, Typography } from '@mui/material';
-import { Box } from '@mui/system';
+import {
+  Avatar,
+  Button,
+  Container,
+  Grid,
+  Link,
+  Typography
+} from '@mui/material';
 import { useAuth0 } from '@auth0/auth0-react';
 import Image from 'next/image';
+import CategoriesList from './components/CategoriesList';
 
 export default function LadingPage() {
   const { isAuthenticated, loginWithRedirect } = useAuth0();
@@ -33,15 +36,16 @@ export default function LadingPage() {
           </Typography>
           {isAuthenticated ? (
             <Link href="/home">
-              <button className={styles.button}>Get Started</button>
+              <Button variant="contained">Get Started</Button>
             </Link>
           ) : (
-            <button
-              className={styles.button}
-              onClick={() => loginWithRedirect()}
+            <Button
+              onClick={loginWithRedirect}
+              variant="contained"
+              size="large"
             >
               Get Started
-            </button>
+            </Button>
           )}
         </Grid>
         <Grid item md={6} xs={12}>
@@ -59,40 +63,7 @@ export default function LadingPage() {
           </div>
         </Grid>
       </Grid>
-      <h2 className={styles.paths}>Discover the learning paths</h2>
-      {/* <div className={styles.circle2}></div> */}
-      <Box sx={{ marginLeft: '60px' }}>
-        <Grid container>
-          <Grid className={styles.cards} sx={{ marginRight: '22px' }}>
-            <h5 className={styles.textCard}>Desarrollo FrontEnd</h5>
-            <AlignVerticalBottomIcon
-              className={styles.icons}
-              fontSize="large"
-            />
-          </Grid>
-          <Grid className={styles.cards} sx={{ marginRight: '22px' }}>
-            <h5 className={styles.textCard}>Desarrollo BackEnd</h5>
-            <AlignVerticalTopIcon className={styles.icons} fontSize="large" />
-          </Grid>
-          <Grid className={styles.cards} sx={{ marginRight: '22px' }}>
-            <h5 className={styles.textCard}>Desarrollo FullStack</h5>
-            <AlignVerticalCenterIcon
-              className={styles.icons}
-              fontSize="large"
-            />
-          </Grid>
-          <Grid className={styles.cards}>
-            <h5 className={styles.textCard}>
-              Ui <br />
-              Design
-            </h5>
-            <AlignHorizontalLeftIcon
-              className={styles.icons}
-              fontSize="large"
-            />
-          </Grid>
-        </Grid>
-      </Box>
+      <CategoriesList />
       <div className={styles.yellowContainer}>
         <div className={styles.fontYellow}></div>
         <div className={styles.fontWhite}>
