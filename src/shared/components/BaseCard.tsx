@@ -1,24 +1,32 @@
-import { useId } from 'react';
-import { Skeleton, Grid } from '@mui/material';
+import { Card, Grid, CardActionArea } from '@mui/material';
 
 /**
  * @param root0 - Props.
  * @param root0.num - Number of cards.
  * @returns Component.
  */
-export default function CardSkeleton({ num }: { num: number }): JSX.Element {
+export default function BaseCard({
+  children,
+  onClick
+}: {
+  children?: JSX.Element | JSX.Element[];
+  onClick: () => void;
+}): JSX.Element {
   return (
-    <>
-      {Array(num)
-        .fill(0)
-        .map(() => {
-          const id = useId();
-          return (
-            <Grid item xs={12} md={3} key={id}>
-              <Skeleton variant="rounded" width={210} height={60} />
-            </Grid>
-          );
-        })}
-    </>
+    <Grid item xs={12} md={3}>
+      <Card onClick={onClick}>
+        <CardActionArea
+          sx={{
+            padding: '15px',
+            height: '20vh',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between'
+          }}
+        >
+          {children}
+        </CardActionArea>
+      </Card>
+    </Grid>
   );
 }

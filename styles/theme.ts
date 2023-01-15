@@ -26,6 +26,14 @@ const lightTheme = createTheme({
         color: 'primary',
         variant: 'contained'
       }
+    },
+    MuiPaper: {
+      styleOverrides: {
+        root: {
+          borderRadius: '10px',
+          boxShadow: 'rgb(0 0 0 / 24%) 0px 3px 8px'
+        }
+      }
     }
   }
 });
