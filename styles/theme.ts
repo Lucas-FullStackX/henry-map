@@ -7,10 +7,17 @@ export const roboto = Roboto({
   display: 'swap',
   fallback: ['Helvetica', 'Arial', 'sans-serif']
 });
-
+export const PRIMARY = '#ffff02';
+export const SECONDARY = '#000';
 const lightTheme = createTheme({
   palette: {
-    mode: 'light'
+    mode: 'light',
+    primary: {
+      main: PRIMARY
+    },
+    secondary: {
+      main: SECONDARY
+    }
   },
   typography: {
     button: {
@@ -32,6 +39,18 @@ const lightTheme = createTheme({
         root: {
           borderRadius: '10px',
           boxShadow: 'rgb(0 0 0 / 24%) 0px 3px 8px'
+        }
+      }
+    },
+    MuiLink: {
+      styleOverrides: {
+        root: {
+          color: SECONDARY,
+          fontWeight: '700',
+          '&:hover': {
+            color: SECONDARY,
+            textDecoration: 'none'
+          }
         }
       }
     }
