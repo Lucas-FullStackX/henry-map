@@ -1,0 +1,9 @@
+query getCategoriesList {
+  categoriesList {
+    count
+    items {
+      id
+      name
+    }
+  }
+}

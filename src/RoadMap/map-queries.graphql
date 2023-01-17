@@ -1,5 +1,5 @@
 query FetchMapList {
-  MapsList {
+  mapsList {
     count
     items {
       id

@@ -9,7 +9,7 @@ export default function MapsList() {
     <div className={styles.container}>
       {data && !loading ? (
         <Container>
-          {data.MapsList.items.map(map => (
+          {data.mapsList.items.map(map => (
             <Box key={map.id}>
               <Typography>{map.name}</Typography>
             </Box>

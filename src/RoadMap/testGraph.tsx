@@ -43,6 +43,7 @@ const TestGraph = () => {
   };
 
   const toggleCluster = clusterId => {
+    console.log(clusterId);
     if (hiddenClusters.includes(clusterId)) {
       setHiddenClusters(hiddenClusters.filter(id => id !== clusterId));
     } else {
@@ -86,7 +87,8 @@ const TestGraph = () => {
       <div
         style={{
           border: '1px solid gray',
-          marginTop: '20px'
+          marginTop: '20px',
+          touchAction: 'none'
         }}
       >
         <ReactForceGraph2d
@@ -95,9 +97,9 @@ const TestGraph = () => {
           ref={forceRef}
           onNodeClick={handleNodeClick}
           graphData={graphData}
-          cooldownTicks={50}
           nodeRelSize={1}
           onEngineStop={() => {
+            console.log('TEST:');
             if (initialCenter) {
               forceRef.current.zoomToFit();
             }
